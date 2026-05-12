@@ -7,11 +7,51 @@ public class Calculadora {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.print("Escolha entre 'basicas' 'media' 'area' ou 'sair': ");
+            System.out.print("Escolha entre 'basicas' 'media' 'area' 'temperatura' ou 'sair': ");
             String entrada = scanner.nextLine();
 
             if (entrada.equalsIgnoreCase("sair")) {
                 break;
+            }
+
+            if (entrada.toLowerCase().startsWith("temperatura")) {
+                String[] parts = entrada.trim().split("\\s+");
+
+                if (parts.length != 4) {
+                    System.out.println("Uso correto: converter em c 100");
+                    System.out.println("Uso correto: converter em f 30");
+                    continue;
+                }
+
+                String graus = parts[2].toLowerCase();
+                double valor;
+                double resultado;
+
+                try {
+                    valor = Double.parseDouble(parts[3]);
+                }catch (NumberFormatException e){
+                    System.out.println("Digite apenas numeros validos");
+                    continue;
+                }
+
+                switch (graus) {
+                    //Celsius para Fahrenheit
+                    case "c":
+                        resultado = (valor * 9 / 5) + 32;
+                        System.out.printf("Fahrenheit: %.2f%n", resultado);
+                        break;
+
+                    //Fahrenheit para Celsius
+                    case "f":
+                        resultado = (valor - 32) * 5 / 9;
+                        System.out.printf("Celsius: %.2f%n", resultado);
+                        break;
+
+                    default:
+                    System.out.println("Use 'c' para Celsius ou 'f' Fahrenheit.");
+                    continue;
+                }
+                continue;
             }
 
             if (entrada.toLowerCase().startsWith("area")) {

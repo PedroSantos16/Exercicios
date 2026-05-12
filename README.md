@@ -8,3 +8,4 @@
   * Calculos Basicos
   * Media Aritmetica
   * Calculo de Area e raio
+  * Conversão de graus: C ⇄ F

@@ -5,4 +5,5 @@
 |---------|--------|----------|----------------|--------|-------|-----|-----------|-------|
 
 * Criação de uma calculadora capaz de:
-* * calculos basicos
+  * Calculos Basicos
+  * Media Aritmetica

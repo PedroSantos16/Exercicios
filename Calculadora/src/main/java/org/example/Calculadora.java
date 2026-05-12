@@ -7,11 +7,59 @@ public class Calculadora {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.print("Escolha entre 'basicas' 'media' 'area' 'temperatura' ou 'sair': ");
+            System.out.print("Escolha entre 'basicas' 'media' 'area' 'temperatura' 'juros' ou 'sair': ");
             String entrada = scanner.nextLine();
 
             if (entrada.equalsIgnoreCase("sair")) {
                 break;
+            }
+
+            if (entrada.toLowerCase().startsWith("juros")) {
+                String[] parts = entrada.trim().split("\\s+");
+
+                if (parts.length != 5) {
+                    System.out.println("Uso correto: JSimples C i t");
+                    System.out.println("Uso correto: JComposto C i t");
+                    continue;
+                }
+
+                String tipo = parts[1].toLowerCase();
+                double capital;
+                double taxa;
+                double tempo;
+
+                try {
+                    capital = Double.parseDouble(parts[2]);
+                    taxa = Double.parseDouble(parts[3]);
+                    tempo = Double.parseDouble(parts[4]);
+                }catch (NumberFormatException e){
+                    System.out.println("Digite apenas números validos");
+                    continue;
+                }
+
+                double juros;
+                double montante;
+
+                switch (tipo) {
+                    case "simples":
+                        juros = capital * taxa * tempo;
+                        montante = capital +juros;
+                        System.out.printf("Juros Simples: %.2f%n",juros);
+                        System.out.printf("Montante: %.2f%n", montante);
+                        break;
+
+                    case "composto":
+                        montante = capital * Math.pow(1 + taxa, tempo);
+                        juros = montante - capital;
+                        System.out.printf("Juros Compostos: %.2f%n",juros);
+                        System.out.printf("Montante: %.2f%n", montante);
+                        break;
+
+                    default:
+                        System.out.println("Tipo invalido. \n Use 'simples' ou 'composto'.");
+                        continue;
+                }
+                continue;
             }
 
             if (entrada.toLowerCase().startsWith("temperatura")) {
@@ -30,7 +78,7 @@ public class Calculadora {
                 try {
                     valor = Double.parseDouble(parts[3]);
                 }catch (NumberFormatException e){
-                    System.out.println("Digite apenas numeros validos");
+                    System.out.println("Digite apenas números validos");
                     continue;
                 }
 
@@ -59,7 +107,7 @@ public class Calculadora {
 
                 if (parts.length < 3) {
                     System.out.println("Uso correto: ");
-                    System.out.println("Area retangulo 1 2");
+                    System.out.println("Area retângulo 1 2");
                     System.out.println("Area circulo 1");
                     System.out.println("Area triangulo 1 2");
                     continue;
@@ -103,11 +151,11 @@ public class Calculadora {
 
                         default:
                             System.out.println("Figura invalida");
-                            System.out.println("Figuras disponiveis: retangulo, circulo, triangulo");
+                            System.out.println("Figuras disponíveis: retangulo, circulo, triangulo");
                             continue;
                     }
                 }catch (NumberFormatException e){
-                    System.out.println("Digite apenas numeros validos");
+                    System.out.println("Digite apenas números validos");
                     continue;
                 }
                 System.out.printf("Area: %.3f%n", resultado);
@@ -156,7 +204,7 @@ public class Calculadora {
                     a = Double.parseDouble(parts[1]);
                     b = Double.parseDouble(parts[3]);
                 } catch (NumberFormatException e) {
-                    System.out.println("Digite apenas numeros validos");
+                    System.out.println("Digite apenas números validos");
                     continue;
                 }
 

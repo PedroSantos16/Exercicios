@@ -14,6 +14,34 @@ public class Calculadora {
                 break;
             }
 
+            if (entrada.toLowerCase().startsWith("media")) {
+                String[] parts = entrada.trim().split("\\s+");
+                if (parts.length < 2) {
+                    System.out.println("Uso Correto deve ser: media 1 2 3");
+                    continue;
+                }
+
+                double soma = 0;
+                boolean erro = false;
+
+                for (int i = 1; i < parts.length; i++) {
+                    try {
+                        soma += Double.parseDouble(parts[i]);
+                    }catch (NumberFormatException e) {
+                        System.out.println("Valor invalido: " +parts[i]);
+                        erro = true;
+                        break;
+                    }
+                }
+                 if (erro) {
+                     continue;
+                 }
+
+                 double media = soma / (parts.length - 1);
+                 System.out.println("Media aritimetica: " + media);
+                 continue;
+            }
+
             if (entrada.toLowerCase().startsWith("basicas")) {
                 String[] parts = entrada.trim().split("\\s+");
                 if (parts.length != 4) {

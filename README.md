@@ -7,3 +7,4 @@
 * Criação de uma calculadora capaz de:
   * Calculos Basicos
   * Media Aritmetica
+  * Calculo de Area e raio

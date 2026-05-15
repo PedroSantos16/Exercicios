@@ -1,4 +1,4 @@
-package org.example;
+package org.calculadora;
 
 import java.util.Scanner;
 
@@ -7,11 +7,32 @@ public class Calculadora {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.print("Escolha entre 'basicas' 'media' 'area' 'temperatura' 'juros' ou 'sair': ");
+            System.out.print(
+                    "Escolha entre contas: 'basicas' 'media' 'area' 'temperatura' 'juros'\n" +
+                            "Ferramentas: 'encurtar'\n" +
+                            "Ou 'sair': ");
             String entrada = scanner.nextLine();
 
             if (entrada.equalsIgnoreCase("sair")) {
                 break;
+            }
+
+            if (entrada.toLowerCase().startsWith("encurtar")) {
+                String[] parts = entrada.trim().split("\\s+", 2);
+
+                if (parts.length != 2) {
+                    System.out.println("Uso correto: encurtar https://www.google.com");
+                    continue;
+                }
+
+                try {
+                    String urlCurta = UrlShortener.encurtar(parts[1]);
+                    System.out.println("URL encurtada: " + urlCurta);
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
+
+                continue;
             }
 
             if (entrada.toLowerCase().startsWith("juros")) {

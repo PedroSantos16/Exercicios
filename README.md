@@ -27,4 +27,8 @@ especificarei na tabela a seguir:
 
 ###### Obs: Use sempre a palavra-chave e depois o operador com a formatação correta, para evitar falhas, ou mensagens de erro. Como será demonstrado no exemplo abaixo:
 
-![img_2.png](img_2.png)
+![img_2.png](Calculadora/img/img_2.png)
+
+# Outras Funcionalidades
+## Ferramentas
+ * Encurtador de URLs(Ainda não útil, funciona apenas local).
